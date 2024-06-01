@@ -85,7 +85,8 @@ public class FlemmeBot extends ListenerAdapter {
     }
 
     public static void main(String[] args) {
-        String token = "layamontokendiscorddoncpourdesraisonsevidentesvousneleverrezpas";
+        // String token =
+        // "layamontokendiscorddoncpourdesraisonsevidentesvousneleverrezpas";
         String channelId = "1110277647453388924";
         try {
             FlemmeBot bot = new FlemmeBot(token, channelId);
