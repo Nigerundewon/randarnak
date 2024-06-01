@@ -10,9 +10,7 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
-
-
-    public class FlemmeBot extends ListenerAdapter {
+public class FlemmeBot extends ListenerAdapter {
     private JDA jda;
     private String channelId;
 
@@ -24,7 +22,8 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if (event.getAuthor().isBot()) return;
+        if (event.getAuthor().isBot())
+            return;
         if (event.getChannel().getId().equals(channelId)) {
             if (event.getMessage().getContentRaw().equals("!difference")) {
                 boolean differenceFound = findDifference();
@@ -43,10 +42,11 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
         }
     }
 
-        private static boolean fiveSeconds() {
+    private static boolean fiveSeconds() {
         long currentTime = System.currentTimeMillis();
         return currentTime % 50 == 0;
     }
+
     public boolean findDifference() {
         try {
             String format = ".png";
@@ -64,9 +64,9 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
             drawNew.drawImage(capture, 0, 0, width, height, null);
             drawNew.dispose();
             if (fiveSeconds()) {
-                for (int y = 0 ; y < height ; y++) {
-                    for (int x = 0 ; x < width ; x++) {
-                        if (oldImage.getRGB(x,y) != newImage.getRGB(x,y)) {
+                for (int y = 0; y < height; y++) {
+                    for (int x = 0; x < width; x++) {
+                        if (oldImage.getRGB(x, y) != newImage.getRGB(x, y)) {
                             b = true;
                             break;
                         }
@@ -79,14 +79,13 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
             drawOld.drawImage(capture, 0, 0, width, height, null);
             drawOld.dispose();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
 
     public static void main(String[] args) {
-        String token = "MTExMDI3ODA3MDYyOTMxODgxOQ.GFVvHg.UPqQ0F_akrrPTH2TLGgKP8U4y_i3B9BZNlzHG4";
+        String token = "layamontokendiscorddoncpourdesraisonsevidentesvousneleverrezpas";
         String channelId = "1110277647453388924";
         try {
             FlemmeBot bot = new FlemmeBot(token, channelId);
